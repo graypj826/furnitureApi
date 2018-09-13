@@ -28,7 +28,7 @@ app.use(bodyParser.text());
 
 
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: ' https://reactfurniturestore.herokuapp.com/',
     credentials: true,
     optionsSuccessStatus: 200,
 };
