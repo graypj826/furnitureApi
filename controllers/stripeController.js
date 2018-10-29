@@ -6,6 +6,20 @@ const stripe            = require('stripe')('pk_test_qZbWBsGhk9N3YZgwePpA3tez');
 
 router.use(bodyParser.text());
 
+let totalAmount = 0
+
+router.post("/total", async (req, res) => {
+  console.log("------------------------------------stripe charge received")
+  console.log(req.body, "---------- this is total req.body")
+  try {
+    res.json({status})
+    return totalAmount = req.body.amount;
+  } catch (err) {
+    console.log(err)
+    res.status(500).end();
+  }
+}); 
+
 router.post("/", async (req, res) => {
   console.log("------------------------------------stripe charge received")
   console.log(req.body, "---------- this is req.body")
