@@ -1,12 +1,14 @@
 const express           = require('express');
 const router            = express.Router();
 const bodyParser        = require('body-parser');
-const stripe            = require('stripe')('sk_test_TwTTlid3GeOG6YPydOjARw4I');
+const stripe            = require('stripe')('pk_test_qZbWBsGhk9N3YZgwePpA3tez');
 // const Checkout          = require('../models/checkout');
 
 router.use(bodyParser.text());
 
 router.post("/", async (req, res) => {
+  console.log("------------------------------------stripe charge received")
+  console.log(req.body)
   try {
     let {status} = await stripe.charges.create({
       amount: 2000,
@@ -18,6 +20,7 @@ router.post("/", async (req, res) => {
 
     res.json({status});
   } catch (err) {
+    console.log(err)
     res.status(500).end();
   }
 }); 
