@@ -8,17 +8,28 @@ router.use(bodyParser.text());
 
 let totalAmount = 0
 
-router.post("/total", async (req, res) => {
+
+router.post('/total', async (req, res) => {
+  console.log('===================================================');
+  console.log(req.session, ' this is req.session in the post route');
+  console.log('===================================================');
+
   console.log("------------------------------------stripe charge received")
   console.log(req.body, "---------- this is total req.body")
+
   try {
-    res.json({status})
-    return totalAmount = req.body.amount;
+      console.log(req.body, ' this is req.body');
+      return totalAmount = req.body.amount;
+
+      res.json({
+          status: 200,
+          data: totalAmount,
+      });
+
   } catch (err) {
-    console.log(err)
-    res.status(500).end();
+      res.send(err);
   }
-}); 
+});
 
 router.post("/", async (req, res) => {
   console.log("------------------------------------stripe charge received")
