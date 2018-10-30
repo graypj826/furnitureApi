@@ -19,7 +19,7 @@ router.post('/total', async (req, res) => {
 
   try {
       console.log(req.body, ' this is req.body');
-      return totalAmount = req.body.amount;
+      totalAmount = req.body.amount;
 
       res.json({
           status: 200,
