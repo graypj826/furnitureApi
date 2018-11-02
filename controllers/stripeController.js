@@ -10,16 +10,13 @@ let totalAmount = 0
 
 
 router.post('/total', async (req, res) => {
-  console.log('===================================================');
-  console.log(req.session, ' this is req.session in the post route');
-  console.log('===================================================');
 
   console.log("------------------------------------stripe charge received")
   console.log(req.body, "---------- this is total req.body")
 
   try {
       console.log(req.body, ' this is req.body');
-      totalAmount = req.body.amount;
+      totalAmount = req.body;
 
       res.json({
           status: 200,
